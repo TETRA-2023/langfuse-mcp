@@ -19,7 +19,7 @@ We aim to acknowledge within 48 hours and patch critical issues within 7 days.
 
 - **API Keys**: Never commit `.env` files or Langfuse keys to version control.
 - **Transport**: When deploying with `streamable-http`, place the server behind
-  a gateway with bearer-token enforcement (e.g., LiteLLM MCP gateway). Do not
+  an authenticating gateway (bearer token, mTLS, or equivalent). Do not
   expose port 8000 directly to untrusted networks.
 - **Read-only mode**: Pass `--read-only` (or `LANGFUSE_MCP_READ_ONLY=1`) when
   the deployment should not perform mutations (prompts, datasets, scores,

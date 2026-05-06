@@ -1,9 +1,10 @@
 # Contributing
 
-This is a TETRA-internal hard fork of
-[avivsinai/langfuse-mcp](https://github.com/avivsinai/langfuse-mcp). Internal
-contributions are welcome; for upstream improvements, please contribute to
-avivsinai's repo first when applicable.
+This is a hard fork of
+[avivsinai/langfuse-mcp](https://github.com/avivsinai/langfuse-mcp).
+Contributions targeting deployment / packaging / HTTP-transport features
+are welcome here; for improvements to the underlying Langfuse data-platform
+mapping, please consider contributing to the upstream repository first.
 
 1. Create a feature branch (`git checkout -b feat/short-name`)
 2. Install development dependencies (`uv sync --all-extras --dev`)
