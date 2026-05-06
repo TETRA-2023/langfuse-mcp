@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.0 (2026-05-06)
+
+### Features
+
+- Add /health route + Dockerfile HEALTHCHECK
+  ([`c78a381`](https://github.com/TETRA-2023/langfuse-mcp/commit/c78a381b29e41389151d03e11c900410c0c6937b))
+
+
 ## v1.0.1 (2026-05-06)
 
 ### Bug Fixes
