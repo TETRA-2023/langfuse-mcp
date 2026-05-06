@@ -25,5 +25,12 @@ USER appuser
 
 EXPOSE 8000
 
+# Liveness probe — hits the /health route the app registers on the streamable-http transport.
+# No-op for stdio mode (the route only exists when the HTTP transport is bound), but Docker
+# will report unhealthy in that case which is the correct semantic (the process is running
+# but isn't reachable over HTTP).
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD ["/app/.venv/bin/python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4).status == 200 else 1)"]
+
 ENTRYPOINT ["/app/.venv/bin/python", "-m", "langfuse_mcp"]
 CMD ["--transport", "streamable-http", "--mcp-host", "0.0.0.0", "--mcp-port", "8000"]

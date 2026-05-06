@@ -28,11 +28,19 @@ def patch_dependencies(monkeypatch: pytest.MonkeyPatch):
     class FastMCP:
         def __init__(self, *args, **kwargs) -> None:
             self._tools = []
+            self._custom_routes = []
             self.lifespan = kwargs.get("lifespan")
 
         def tool(self):
             def decorator(func):
                 self._tools.append(func)
+                return func
+
+            return decorator
+
+        def custom_route(self, path, methods, name=None, include_in_schema=True):
+            def decorator(func):
+                self._custom_routes.append((path, tuple(methods), func))
                 return func
 
             return decorator

@@ -3890,6 +3890,13 @@ def app_factory(
         json_response=True,
     )
 
+    @mcp.custom_route("/health", methods=["GET"])
+    async def health_check(request):
+        """Liveness probe: process is up and the FastMCP app is reachable."""
+        from starlette.responses import JSONResponse
+
+        return JSONResponse({"status": "ok", "version": __version__})
+
     # Tool function lookup
     tool_funcs = {
         "fetch_traces": fetch_traces,
