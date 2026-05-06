@@ -3881,7 +3881,14 @@ def app_factory(
             state.langfuse_client.flush()
             state.langfuse_client.shutdown()
 
-    mcp = FastMCP("Langfuse MCP Server", lifespan=lifespan, host=mcp_host, port=mcp_port)
+    mcp = FastMCP(
+        "Langfuse MCP Server",
+        lifespan=lifespan,
+        host=mcp_host,
+        port=mcp_port,
+        stateless_http=True,
+        json_response=True,
+    )
 
     # Tool function lookup
     tool_funcs = {
