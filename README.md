@@ -30,7 +30,7 @@ cp .env.example .env
 | `LANGFUSE_HOST`                    | Langfuse instance URL (no trailing slash)                  | `https://cloud.langfuse.com` |
 | `LANGFUSE_PUBLIC_KEY`              | Project public key (`pk-lf-…`)                             | _required_               |
 | `LANGFUSE_SECRET_KEY`              | Project secret key (`sk-lf-…`)                             | _required_               |
-| `MCP_TRANSPORT`                    | `stdio` \| `streamable-http`                               | `streamable-http`        |
+| `MCP_TRANSPORT`                    | `stdio` \| `streamable-http`                               | `stdio`                  |
 | `MCP_HOST`                         | Bind address for HTTP transport                            | `0.0.0.0`                |
 | `MCP_PORT`                         | Listen port for HTTP transport                             | `8000`                   |
 | `LANGFUSE_MCP_DEFAULT_OUTPUT_MODE` | `compact` \| `full` \| `full_json_file`                    | `compact`                |

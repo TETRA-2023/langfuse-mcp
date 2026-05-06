@@ -340,7 +340,7 @@ def _read_env_defaults() -> dict[str, Any]:
         "log_level": os.getenv("LANGFUSE_LOG_LEVEL", "INFO"),
         "log_to_console": os.getenv("LANGFUSE_LOG_TO_CONSOLE", "").lower() in {"1", "true", "yes"},
         "default_output_mode": _read_default_output_mode().value,
-        "transport": os.getenv("MCP_TRANSPORT", "streamable-http"),
+        "transport": os.getenv("MCP_TRANSPORT", "stdio"),
         "mcp_host": os.getenv("MCP_HOST", "0.0.0.0"),
         "mcp_port": mcp_port,
     }
@@ -426,7 +426,7 @@ def _build_arg_parser(env_defaults: dict[str, Any]) -> argparse.ArgumentParser:
         type=str,
         default=env_defaults["transport"],
         choices=["stdio", "streamable-http"],
-        help="MCP transport. 'stdio' for local Claude Code, 'streamable-http' for gateway/remote. Set via MCP_TRANSPORT.",
+        help="MCP transport. 'stdio' (default) for local clients, 'streamable-http' for gateway/remote. Set via MCP_TRANSPORT.",
     )
     parser.add_argument(
         "--mcp-host",
