@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.2 (2026-05-06)
+
+### Bug Fixes
+
+- Drop json_response=True; keep stateless_http=True
+  ([`a48d72c`](https://github.com/TETRA-2023/langfuse-mcp/commit/a48d72ca5c1fe1aedccb5ae77d3b217be2b44ed7))
+
+
 ## v1.1.1 (2026-05-06)
 
 ### Bug Fixes
