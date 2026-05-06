@@ -31,7 +31,7 @@ def patch_dependencies(monkeypatch: pytest.MonkeyPatch):
             self._custom_routes = []
             self.lifespan = kwargs.get("lifespan")
 
-        def tool(self):
+        def tool(self, *args, **kwargs):
             def decorator(func):
                 self._tools.append(func)
                 return func

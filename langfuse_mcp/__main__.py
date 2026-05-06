@@ -3951,7 +3951,12 @@ def app_factory(
                     if read_only and tool_name in WRITE_TOOLS:
                         skipped_write.append(tool_name)
                         continue
-                    mcp.tool()(_bind_default_output_mode(tool_funcs[tool_name], default_output_mode))
+                    # structured_output=False suppresses output-schema generation. Without it,
+                    # FastMCP returns structuredContent alongside the text content; clients
+                    # (e.g. LiteLLM gateway via mcp-python-sdk) then call list_tools() after
+                    # every tool call to validate the structured payload — that second
+                    # roundtrip hangs against a stateless server because the session is gone.
+                    mcp.tool(structured_output=False)(_bind_default_output_mode(tool_funcs[tool_name], default_output_mode))
                     registered.append(tool_name)
 
     if read_only and skipped_write:
