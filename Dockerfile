@@ -6,17 +6,16 @@ RUN groupadd --system appgroup && useradd --system --gid appgroup appuser
 WORKDIR /app
 
 # Copy dependency files first for layer caching
-COPY pyproject.toml ./
-COPY uv.lock* ./
+COPY pyproject.toml uv.lock ./
 
-# Install dependencies into a virtualenv from lock if present, else resolve fresh
-RUN uv sync --no-install-project || uv sync --no-install-project --no-frozen
+# Install dependencies only (reproducible from lockfile)
+RUN uv sync --frozen --no-install-project
 
 # Copy application source
 COPY langfuse_mcp/ langfuse_mcp/
 
 # Install the project itself (non-editable) so uv run doesn't need to write at runtime
-RUN uv sync --no-editable || uv sync --no-editable --no-frozen
+RUN uv sync --frozen --no-editable
 
 ENV UV_CACHE_DIR=/tmp/uv-cache \
     PYTHONUNBUFFERED=1 \

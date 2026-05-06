@@ -95,8 +95,8 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# UV lock file should NOT live in a library repo – keep it local
-uv.lock
+# NB: this repo is a deployable service (container), not a library — uv.lock
+# is tracked for reproducible builds.
 
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
