@@ -1,0 +1,25 @@
+langfuse-mcp (TETRA fork)
+=========================
+
+This product is a derivative work of:
+
+    avivsinai/langfuse-mcp
+    https://github.com/avivsinai/langfuse-mcp
+    Copyright (c) 2025-2026 Aviv Sinai
+    Licensed under the MIT License
+
+Imported source: tag v0.9.1, commit a55d440988205c48633e157bddc72ce50dfafd19.
+
+The original LICENSE file is retained verbatim and remains in force for the
+material it covers. Modifications made by TETRA are also released under the
+MIT License.
+
+TETRA modifications (high-level):
+- HTTP transport support (streamable-http) for deployment behind an MCP gateway
+- Container image rebuilt for HTTP-by-default operation (port 8000)
+- Documentation, CI, and release tooling reshaped for in-house operation
+
+This repository is intentionally disconnected from upstream — there is no
+GitHub fork relationship. A local 'upstream' git remote pointing at
+avivsinai/langfuse-mcp is configured for occasional manual cherry-picks of
+upstream changes.

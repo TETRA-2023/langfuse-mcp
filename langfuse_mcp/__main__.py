@@ -327,6 +327,11 @@ def _read_env_defaults() -> dict[str, Any]:
         timeout = int(timeout_str)
     except ValueError:
         timeout = 30
+    mcp_port_str = os.getenv("MCP_PORT", "8000")
+    try:
+        mcp_port = int(mcp_port_str)
+    except ValueError:
+        mcp_port = 8000
     return {
         "public_key": os.getenv("LANGFUSE_PUBLIC_KEY"),
         "secret_key": os.getenv("LANGFUSE_SECRET_KEY"),
@@ -335,6 +340,9 @@ def _read_env_defaults() -> dict[str, Any]:
         "log_level": os.getenv("LANGFUSE_LOG_LEVEL", "INFO"),
         "log_to_console": os.getenv("LANGFUSE_LOG_TO_CONSOLE", "").lower() in {"1", "true", "yes"},
         "default_output_mode": _read_default_output_mode().value,
+        "transport": os.getenv("MCP_TRANSPORT", "streamable-http"),
+        "mcp_host": os.getenv("MCP_HOST", "0.0.0.0"),
+        "mcp_port": mcp_port,
     }
 
 
@@ -412,6 +420,25 @@ def _build_arg_parser(env_defaults: dict[str, Any]) -> argparse.ArgumentParser:
         action="store_true",
         default=os.getenv("LANGFUSE_MCP_READ_ONLY", "").lower() in ("1", "true", "yes"),
         help="Disable all write operations (create/update/delete tools). Safer for read-only access.",
+    )
+    parser.add_argument(
+        "--transport",
+        type=str,
+        default=env_defaults["transport"],
+        choices=["stdio", "streamable-http"],
+        help="MCP transport. 'stdio' for local Claude Code, 'streamable-http' for gateway/remote. Set via MCP_TRANSPORT.",
+    )
+    parser.add_argument(
+        "--mcp-host",
+        type=str,
+        default=env_defaults["mcp_host"],
+        help="Bind address for HTTP transports (no-op for stdio). Set via MCP_HOST. Default: 0.0.0.0",
+    )
+    parser.add_argument(
+        "--mcp-port",
+        type=int,
+        default=env_defaults["mcp_port"],
+        help="Listen port for HTTP transports (no-op for stdio). Set via MCP_PORT. Default: 8000",
     )
 
     return parser
@@ -3796,6 +3823,8 @@ def app_factory(
     timeout: int = 30,
     read_only: bool = False,
     default_output_mode: OutputMode = OutputMode.COMPACT,
+    mcp_host: str = "127.0.0.1",
+    mcp_port: int = 8000,
 ) -> FastMCP:
     """Create a FastMCP server with Langfuse tools.
 
@@ -3810,6 +3839,8 @@ def app_factory(
         timeout: API request timeout in seconds (default: 30). The Langfuse SDK defaults to 5s which is too aggressive.
         read_only: If True, disable all write operations (create/update/delete tools).
         default_output_mode: Default output_mode exposed in MCP tool schemas.
+        mcp_host: Bind address for HTTP transports (no-op for stdio). Default: 127.0.0.1.
+        mcp_port: Listen port for HTTP transports (no-op for stdio). Default: 8000.
     """
     if enabled_tools is None:
         enabled_tools = ALL_TOOL_GROUPS
@@ -3850,7 +3881,7 @@ def app_factory(
             state.langfuse_client.flush()
             state.langfuse_client.shutdown()
 
-    mcp = FastMCP("Langfuse MCP Server", lifespan=lifespan)
+    mcp = FastMCP("Langfuse MCP Server", lifespan=lifespan, host=mcp_host, port=mcp_port)
 
     # Tool function lookup
     tool_funcs = {
@@ -3969,9 +4000,12 @@ def main():
         timeout=args.timeout,
         read_only=args.read_only,
         default_output_mode=_ensure_output_mode(args.default_output_mode),
+        mcp_host=args.mcp_host,
+        mcp_port=args.mcp_port,
     )
 
-    app.run(transport="stdio")
+    logger.info(f"MCP transport: {args.transport} (bind {args.mcp_host}:{args.mcp_port} for HTTP)")
+    app.run(transport=args.transport)
 
 
 if __name__ == "__main__":

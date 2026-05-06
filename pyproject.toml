@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=42.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langfuse-mcp"
+version = "1.0.0"
+description = "MCP server for Langfuse — query traces, observations, sessions, scores, exceptions, prompts, datasets, and annotation queues over the Model Context Protocol."
+requires-python = ">=3.10"
+authors = [{ name = "TETRA" }]
+license = { text = "MIT" }
+readme = "README.md"
+keywords = ["mcp", "langfuse", "observability", "tracing", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "langfuse>=3.11.2,<5.0.0",
+    "mcp[cli]>=1.6.0",
+    "pydantic>=2.0.0",
+    "cachetools>=5.0.0",
+]
+
+[project.scripts]
+langfuse-mcp = "langfuse_mcp.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/TETRA-2023/langfuse-mcp"
+Repository = "https://github.com/TETRA-2023/langfuse-mcp"
+Issues = "https://github.com/TETRA-2023/langfuse-mcp/issues"
+
+[tool.setuptools]
+packages = ["langfuse_mcp"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "FA", "UP", "RUF100", "D", "D401"]
+ignore = ["UP031"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+branch = "main"
+commit_message = "chore(release): v{version}"
+build_command = ""
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = ["build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test"]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf"]
+
+[tool.semantic_release.remote]
+type = "github"
+token = { env = "GH_TOKEN" }
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-asyncio>=0.21.0",
+    "pytest-mock",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.8.0",
+    "pre-commit>=3.0.0",
+    "python-semantic-release>=10.5.3",
+]
