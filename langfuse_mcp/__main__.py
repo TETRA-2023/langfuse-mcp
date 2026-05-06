@@ -3887,7 +3887,6 @@ def app_factory(
         host=mcp_host,
         port=mcp_port,
         stateless_http=True,
-        json_response=True,
     )
 
     @mcp.custom_route("/health", methods=["GET"])
