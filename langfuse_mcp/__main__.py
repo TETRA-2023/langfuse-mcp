@@ -5,6 +5,7 @@ agents to query trace data, observations, and exceptions from Langfuse.
 """
 
 import argparse
+import atexit
 import functools
 import inspect
 import json
@@ -3849,44 +3850,63 @@ def app_factory(
         if not enabled_tools:
             enabled_tools = ALL_TOOL_GROUPS
 
+    # State is created on first lifespan entry and cached for the process lifetime.
+    # Why: the Langfuse client + caches must outlive any single request. Stateless HTTP
+    # mode used to re-enter lifespan per request, tearing down the client mid-flight,
+    # so we ran with stateless_http=True and hit a different bug — litellm's
+    # mcp.client.streamable_http needs the GET-SSE return channel, which has no events
+    # in stateless mode and hangs the client's session manager. Caching the state across
+    # lifespan invocations decouples client lifecycle from request flow, lets us run in
+    # stateful (default) mode where gateway interop works, and stays robust if a future
+    # FastMCP change ever re-enters lifespan.
+    state_holder: list[MCPState] = []
+
     @asynccontextmanager
     async def lifespan(server: FastMCP) -> AsyncIterator[MCPState]:
-        init_params = inspect.signature(Langfuse.__init__).parameters
-        langfuse_kwargs = {
-            "public_key": public_key,
-            "secret_key": secret_key,
-            "host": host,
-            "debug": False,
-            "flush_at": 0,
-            "flush_interval": None,
-        }
-        if "timeout" in init_params:
-            langfuse_kwargs["timeout"] = timeout
-        if "tracing_enabled" in init_params:
-            langfuse_kwargs["tracing_enabled"] = False
+        if not state_holder:
+            init_params = inspect.signature(Langfuse.__init__).parameters
+            langfuse_kwargs = {
+                "public_key": public_key,
+                "secret_key": secret_key,
+                "host": host,
+                "debug": False,
+                "flush_at": 0,
+                "flush_interval": None,
+            }
+            if "timeout" in init_params:
+                langfuse_kwargs["timeout"] = timeout
+            if "tracing_enabled" in init_params:
+                langfuse_kwargs["tracing_enabled"] = False
 
-        state = MCPState(
-            langfuse_client=Langfuse(**langfuse_kwargs),
-            observation_cache=LRUCache(maxsize=cache_size),
-            file_to_observations_map=LRUCache(maxsize=cache_size),
-            exception_type_map=LRUCache(maxsize=cache_size),
-            exceptions_by_filepath=LRUCache(maxsize=cache_size),
-            dump_dir=dump_dir,
-            default_output_mode=default_output_mode,
-        )
-        try:
-            yield state
-        finally:
-            logger.info("Cleaning up Langfuse client")
-            state.langfuse_client.flush()
-            state.langfuse_client.shutdown()
+            state_holder.append(
+                MCPState(
+                    langfuse_client=Langfuse(**langfuse_kwargs),
+                    observation_cache=LRUCache(maxsize=cache_size),
+                    file_to_observations_map=LRUCache(maxsize=cache_size),
+                    exception_type_map=LRUCache(maxsize=cache_size),
+                    exceptions_by_filepath=LRUCache(maxsize=cache_size),
+                    dump_dir=dump_dir,
+                    default_output_mode=default_output_mode,
+                )
+            )
+
+            def _shutdown_langfuse_client() -> None:
+                logger.info("Cleaning up Langfuse client (atexit)")
+                try:
+                    state_holder[0].langfuse_client.flush()
+                    state_holder[0].langfuse_client.shutdown()
+                except Exception as e:
+                    logger.warning(f"Langfuse client shutdown failed: {e!r}")
+
+            atexit.register(_shutdown_langfuse_client)
+
+        yield state_holder[0]
 
     mcp = FastMCP(
         "Langfuse MCP Server",
         lifespan=lifespan,
         host=mcp_host,
         port=mcp_port,
-        stateless_http=True,
     )
 
     @mcp.custom_route("/health", methods=["GET"])
