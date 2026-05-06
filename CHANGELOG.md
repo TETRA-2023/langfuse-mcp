@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.3 (2026-05-06)
+
+### Bug Fixes
+
+- Drop stateless_http=True; cache state across lifespan invocations
+  ([`21abb4b`](https://github.com/TETRA-2023/langfuse-mcp/commit/21abb4b6c8545373b9cc96172ae3dd1e2be141c1))
+
+
 ## v1.1.2 (2026-05-06)
 
 ### Bug Fixes
