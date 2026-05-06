@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.1 (2026-05-06)
+
+### Bug Fixes
+
+- Register tools with structured_output=False to avoid client revalidation roundtrip
+  ([`f9f23e0`](https://github.com/TETRA-2023/langfuse-mcp/commit/f9f23e0c519b64fea02c42730d45b8e59d85e2b9))
+
+
 ## v1.1.0 (2026-05-06)
 
 ### Features
