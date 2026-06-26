@@ -23,7 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "langfuse>=4.7.1,<5.0.0",
-    "mcp[cli]>=1.6.0",
+    "mcp[cli]>=1.28.1",
     "pydantic>=2.13.4",
     "cachetools>=5.0.0",
 ]
