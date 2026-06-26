@@ -2,6 +2,46 @@
 
 <!-- version list -->
 
+## v1.1.5 (2026-06-26)
+
+### Bug Fixes
+
+- **ci**: Publish version + stable image tags on release
+  ([#25](https://github.com/TETRA-2023/langfuse-mcp/pull/25),
+  [`c474b93`](https://github.com/TETRA-2023/langfuse-mcp/commit/c474b93210cda9123d29659ee9fb568f124c7ca3))
+
+### Chores
+
+- **ci**: Restore release-job checkout to v7
+  ([#23](https://github.com/TETRA-2023/langfuse-mcp/pull/23),
+  [`ebf2d30`](https://github.com/TETRA-2023/langfuse-mcp/commit/ebf2d308b8efcc4539738ca675d607527dbdb6af))
+
+- **deps**: Bump cachetools from 7.1.1 to 7.1.4
+  ([#20](https://github.com/TETRA-2023/langfuse-mcp/pull/20),
+  [`719b9f6`](https://github.com/TETRA-2023/langfuse-mcp/commit/719b9f671ac87eaf843e95bac0a89d98822d377b))
+
+- **deps**: Bump langfuse from 4.7.1 to 4.12.0
+  ([#18](https://github.com/TETRA-2023/langfuse-mcp/pull/18),
+  [`5111b61`](https://github.com/TETRA-2023/langfuse-mcp/commit/5111b61c206394f599985eeee0eae4732920f8c7))
+
+- **deps**: Drop actions/checkout ignore ([#23](https://github.com/TETRA-2023/langfuse-mcp/pull/23),
+  [`ebf2d30`](https://github.com/TETRA-2023/langfuse-mcp/commit/ebf2d308b8efcc4539738ca675d607527dbdb6af))
+
+- **deps-dev**: Bump pytest-asyncio from 1.3.0 to 1.4.0
+  ([#19](https://github.com/TETRA-2023/langfuse-mcp/pull/19),
+  [`86c6c87`](https://github.com/TETRA-2023/langfuse-mcp/commit/86c6c870f8d2e96ad978dcff63cf54e6cb41585e))
+
+- **deps-dev**: Bump ruff from 0.15.17 to 0.15.20
+  ([#22](https://github.com/TETRA-2023/langfuse-mcp/pull/22),
+  [`e9910f1`](https://github.com/TETRA-2023/langfuse-mcp/commit/e9910f10b5fcc9ed7c079f3d1f24b2887bddd97c))
+
+### Continuous Integration
+
+- Auto-merge Dependabot PRs (non-major, checks-gated)
+  ([#24](https://github.com/TETRA-2023/langfuse-mcp/pull/24),
+  [`1035274`](https://github.com/TETRA-2023/langfuse-mcp/commit/1035274f485154bed1000a338ef8f500d206ba37))
+
+
 ## v1.1.4 (2026-06-26)
 
 ### Bug Fixes
