@@ -77,7 +77,7 @@ dev = [
     "pytest-asyncio>=1.4.0",
     "pytest-mock",
     "pytest-cov>=4.1.0",
-    "ruff>=0.15.21",
+    "ruff>=0.15.22",
     "pre-commit>=3.0.0",
     "python-semantic-release>=10.6.1",
 ]
