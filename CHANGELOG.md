@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.1.7 (2026-10-06)
+
+### Bug Fixes
+
+- Bump cryptography from 48.0.1 to 50.0.0
+  ([#45](https://github.com/TETRA-2023/langfuse-mcp/pull/45),
+  [`d64ce3f`](https://github.com/TETRA-2023/langfuse-mcp/commit/d64ce3f900e2abc3354e7567bc3f548a4f734862))
+
+
 ## v1.1.6 (2026-10-06)
 
 ### Bug Fixes
