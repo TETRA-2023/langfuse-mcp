@@ -2,6 +2,30 @@
 
 <!-- version list -->
 
+## v1.1.8 (2026-10-07)
+
+### Bug Fixes
+
+- **deps**: Pin mcp<2 — v1.1.6/v1.1.7 crash on import under mcp 2.2.0
+  ([#81](https://github.com/TETRA-2023/langfuse-mcp/pull/81),
+  [`68c7e6a`](https://github.com/TETRA-2023/langfuse-mcp/commit/68c7e6a7d6e10421d580598aa4fb69db5f6ce3e9))
+
+### Chores
+
+- Bump pytest from 9.0.3 to 9.1.1 ([#21](https://github.com/TETRA-2023/langfuse-mcp/pull/21),
+  [`78260a7`](https://github.com/TETRA-2023/langfuse-mcp/commit/78260a72b2a061814cf7987febfbd77903491742))
+
+- **deps**: Bump dependabot/fetch-metadata from 2 to 3
+  ([#28](https://github.com/TETRA-2023/langfuse-mcp/pull/28),
+  [`f547901`](https://github.com/TETRA-2023/langfuse-mcp/commit/f547901a29210249630803cf8083b87ae48f5b47))
+
+### Continuous Integration
+
+- **deps**: Auto-merge with the GH_TOKEN PAT so merges fire main's CI and release
+  ([#80](https://github.com/TETRA-2023/langfuse-mcp/pull/80),
+  [`31508b5`](https://github.com/TETRA-2023/langfuse-mcp/commit/31508b5e6f4bc57354b2371687e7aff6c273d6db))
+
+
 ## v1.1.7 (2026-10-06)
 
 ### Bug Fixes
