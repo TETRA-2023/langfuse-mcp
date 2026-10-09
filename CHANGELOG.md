@@ -2,6 +2,29 @@
 
 <!-- version list -->
 
+## v1.1.9 (2026-10-09)
+
+### Bug Fixes
+
+- Update mcp[cli] requirement from <2,>=1.28.1 to >=1.30.0,<2
+  ([#83](https://github.com/TETRA-2023/langfuse-mcp/pull/83),
+  [`0699994`](https://github.com/TETRA-2023/langfuse-mcp/commit/0699994c3ffef6e870dfdb9714589f7c6d58cc80))
+
+### Continuous Integration
+
+- Gate merges and :stable on a container smoke test (initialize + tools/list)
+  ([#84](https://github.com/TETRA-2023/langfuse-mcp/pull/84),
+  [`3d8c350`](https://github.com/TETRA-2023/langfuse-mcp/commit/3d8c3501d221c58080e6d62a01ebbab92518d874))
+
+- **smoke**: Pipe the script on stdin instead of bind-mounting it
+  ([#84](https://github.com/TETRA-2023/langfuse-mcp/pull/84),
+  [`3d8c350`](https://github.com/TETRA-2023/langfuse-mcp/commit/3d8c3501d221c58080e6d62a01ebbab92518d874))
+
+- **smoke**: Run the server under test with --network none
+  ([#84](https://github.com/TETRA-2023/langfuse-mcp/pull/84),
+  [`3d8c350`](https://github.com/TETRA-2023/langfuse-mcp/commit/3d8c3501d221c58080e6d62a01ebbab92518d874))
+
+
 ## v1.1.8 (2026-10-07)
 
 ### Bug Fixes
