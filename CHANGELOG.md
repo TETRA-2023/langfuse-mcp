@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.10 (2026-10-12)
+
+### Bug Fixes
+
+- Bump cachetools from 7.2.0 to 7.2.1 ([#87](https://github.com/TETRA-2023/langfuse-mcp/pull/87),
+  [`1afc71d`](https://github.com/TETRA-2023/langfuse-mcp/commit/1afc71d7824464b16e32e8818d208c74e7825231))
+
+
 ## v1.1.9 (2026-10-09)
 
 ### Bug Fixes
