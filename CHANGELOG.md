@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.11 (2026-10-12)
+
+### Bug Fixes
+
+- Bump pydantic from 2.13.5 to 2.14.0 ([#85](https://github.com/TETRA-2023/langfuse-mcp/pull/85),
+  [`750877a`](https://github.com/TETRA-2023/langfuse-mcp/commit/750877a51b5c6a05e53e7541446c3a0c1cde9c07))
+
+
 ## v1.1.10 (2026-10-12)
 
 ### Bug Fixes
