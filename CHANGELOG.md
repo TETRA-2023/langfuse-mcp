@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.13 (2026-10-19)
+
+### Bug Fixes
+
+- Bump langfuse from 4.16.0 to 4.18.0 ([#88](https://github.com/TETRA-2023/langfuse-mcp/pull/88),
+  [`e922325`](https://github.com/TETRA-2023/langfuse-mcp/commit/e9223255de6a24526b7e7c007765328682fab77f))
+
+
 ## v1.1.12 (2026-10-19)
 
 ### Bug Fixes
