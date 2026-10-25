@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.16 (2026-10-25)
+
+### Bug Fixes
+
+- Bump gitpython from 3.1.62 to 3.2.1 ([#94](https://github.com/TETRA-2023/langfuse-mcp/pull/94),
+  [`1b9ca22`](https://github.com/TETRA-2023/langfuse-mcp/commit/1b9ca22fc057400e09d15931ebc254de24a9ed14))
+
+
 ## v1.1.15 (2026-10-25)
 
 ### Bug Fixes
