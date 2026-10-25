@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.1.17 (2026-10-25)
+
+### Bug Fixes
+
+- Bump certifi from 2026.4.22 to 2026.10.19
+  ([#93](https://github.com/TETRA-2023/langfuse-mcp/pull/93),
+  [`160886f`](https://github.com/TETRA-2023/langfuse-mcp/commit/160886f58ac036406c4c8ec702c56cf9fe6e867d))
+
+
 ## v1.1.16 (2026-10-25)
 
 ### Bug Fixes
