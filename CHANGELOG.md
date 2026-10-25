@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.1.15 (2026-10-25)
+
+### Bug Fixes
+
+- Bump virtualenv from 21.7.13 to 21.14.13
+  ([#92](https://github.com/TETRA-2023/langfuse-mcp/pull/92),
+  [`32a1977`](https://github.com/TETRA-2023/langfuse-mcp/commit/32a1977ccb571a24177a4105f65d3b2d36dcf753))
+
+### Chores
+
+- Bump ruff from 0.16.10 to 0.17.1 ([#90](https://github.com/TETRA-2023/langfuse-mcp/pull/90),
+  [`b754132`](https://github.com/TETRA-2023/langfuse-mcp/commit/b754132de7b00203518fbd4663c3c6880989bdd9))
+
+
 ## v1.1.14 (2026-10-19)
 
 ### Bug Fixes
