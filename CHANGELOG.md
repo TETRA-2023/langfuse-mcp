@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.1.18 (2026-10-26)
+
+### Bug Fixes
+
+- Bump opentelemetry-api from 1.45.0 to 1.45.1
+  ([#95](https://github.com/TETRA-2023/langfuse-mcp/pull/95),
+  [`969e988`](https://github.com/TETRA-2023/langfuse-mcp/commit/969e98816c2c684cdd18fc2608897ced8338fa82))
+
+### Chores
+
+- Bump ruff from 0.17.1 to 0.17.2 ([#96](https://github.com/TETRA-2023/langfuse-mcp/pull/96),
+  [`b883300`](https://github.com/TETRA-2023/langfuse-mcp/commit/b8833004a12411cd079ef1dbdd81d610b5f5ea5a))
+
+
 ## v1.1.17 (2026-10-25)
 
 ### Bug Fixes
