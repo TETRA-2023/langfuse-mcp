@@ -1,5 +1,8 @@
 # CHANGELOG
 
+> Frozen on 2026-10-28 at v1.1.18. Later versions: see the
+> [GitHub Releases](https://github.com/TETRA-2023/langfuse-mcp/releases).
+
 <!-- version list -->
 
 ## v1.1.18 (2026-10-26)
