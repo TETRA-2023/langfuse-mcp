@@ -4,7 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "langfuse-mcp"
-version = "1.1.18"
+# Real version = git tag vX.Y.Z (see GitHub Releases); never bumped here.
+# release-image.yml writes the tag's version here before the image build, so
+# /health reports it (importlib.metadata). Taiga #2870.
+version = "0.0.0"
 description = "MCP server for Langfuse — query traces, observations, sessions, scores, exceptions, prompts, datasets, and annotation queues over the Model Context Protocol."
 requires-python = ">=3.10"
 authors = [{ name = "TETRA" }]
@@ -53,11 +56,10 @@ combine-as-imports = true
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+# Tag only: .github/workflows/release.yml tags the commit and creates the
+# GitHub Release; nothing is committed to main.
 [tool.semantic_release]
-version_toml = ["pyproject.toml:project.version"]
 branch = "main"
-commit_message = "chore(release): v{version}"
-build_command = ""
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = ["build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test"]
@@ -67,9 +69,6 @@ patch_tags = ["fix", "perf"]
 [tool.semantic_release.remote]
 type = "github"
 token = { env = "GH_TOKEN" }
-
-[tool.semantic_release.changelog.default_templates]
-changelog_file = "CHANGELOG.md"
 
 [dependency-groups]
 dev = [
