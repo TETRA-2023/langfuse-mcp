@@ -27,8 +27,8 @@ classifiers = [
 dependencies = [
     "langfuse>=4.18.0,<5.0.0",
     "mcp[cli]>=1.30.0,<2",
-    "pydantic>=2.14.1",
-    "cachetools>=7.2.4",
+    "pydantic>=2.14.2",
+    "cachetools>=7.2.7",
 ]
 
 [project.scripts]
@@ -72,11 +72,11 @@ token = { env = "GH_TOKEN" }
 
 [dependency-groups]
 dev = [
-    "pytest>=9.1.1",
-    "pytest-asyncio>=1.4.0",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.4.1",
     "pytest-mock",
     "pytest-cov>=4.1.0",
-    "ruff>=0.17.2",
+    "ruff>=0.17.3",
     "pre-commit>=4.6.2",
     "python-semantic-release>=10.7.0",
 ]
