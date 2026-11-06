@@ -11,7 +11,7 @@
 If you discover a security vulnerability:
 
 1. **DO NOT** open a public GitHub issue.
-2. Email the maintainers directly with details and reproduction steps.
+2. Open a private security advisory on this repository ([Security → Report a vulnerability](https://github.com/TETRA-2023/langfuse-mcp/security/advisories/new)) with details and reproduction steps.
 
 We aim to acknowledge within 48 hours and patch critical issues within 7 days.
 
