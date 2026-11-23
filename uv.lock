@@ -70,11 +70,11 @@ wheels = [
 
 [[package]]
 name = "cachetools"
-version = "7.3.1"
+version = "7.3.3"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/04/d7/c2d7834f49eb10ba2eb55797a8a2e64c03679ec82cce58cfe1f03bb55024/cachetools-7.3.1.tar.gz", hash = "sha256:32e20b38b9cb7ff8d9fa7692e2f8969be3010083e6e7eac54226d51a91425d15", size = 49536, upload-time = "2026-11-12T21:25:12.764Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1c/48/a5abcdd3c3b2aac71fb4379b451ac832cb1c988ed050cccd9ca1bd0c9c46/cachetools-7.3.3.tar.gz", hash = "sha256:46e92905f580cb137c499b9ec6acd73d569c2c3542ddfeb286618685e55cb340", size = 51165, upload-time = "2026-11-19T17:49:11.203Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9e/ba/8f2b8d09957f8e8fed09236f22f7737b812bed5939cc6e2f5d9e77b0d71b/cachetools-7.3.1-py3-none-any.whl", hash = "sha256:0a2c9cfc6c6556161570c06d52b8939734d316ccf7ecad158fdb34b300808fce", size = 19785, upload-time = "2026-11-12T21:25:10.989Z" },
+    { url = "https://files.pythonhosted.org/packages/35/a3/62e2d09a9e1e45a9b586f3b4a2cb47196315617d4251c83f4c93baee4b7c/cachetools-7.3.3-py3-none-any.whl", hash = "sha256:32305addec0581cae6d4f7952d01d078dbc521f922650eba395b9d25b7481843", size = 20106, upload-time = "2026-11-19T17:49:09.462Z" },
 ]
 
 [[package]]
@@ -733,7 +733,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cachetools", specifier = ">=7.3.1" },
+    { name = "cachetools", specifier = ">=7.3.3" },
     { name = "langfuse", specifier = ">=4.18.0,<5.0.0" },
     { name = "mcp", extras = ["cli"], specifier = ">=1.30.0,<2" },
     { name = "pydantic", specifier = ">=2.14.4" },
